@@ -1,0 +1,19 @@
+{% if posts|length > 0 %}
+  <ul role="list" class="results">
+    {% for post in posts  %}
+      <li class="result boxBorder boxPadding" data-theme="reset">
+        <article>
+          <h2 class="h5">{{ post.title }}</h2>
+          <p>{{ post.excerpt.read_more(false) }}</p>
+          <footer>
+            <a href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}" class="link">{{ labels.readMore }}</a>
+          </footer>
+        </article>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <div class="noResults">
+    <p>{{ labels.noResults }}</p>
+  </div>
+{% endif %}
